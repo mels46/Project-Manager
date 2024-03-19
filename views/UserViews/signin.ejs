@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/SignInStyle.css' />
+</head>
+<body class="background-image">
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+<div class="scontainer">
+    <form action="/users/signin/create" method="post">
+        <h2>Registruj se:</h2>
+        <div>
+        <label for="ime">Ime</label>
+        <input type="text" name="ime" id="ime" placeholder="Ime" autofocus>
+        </div>
+        <div>
+        <label for="prezime">Prezime</label>
+        <input type="text" name="prezime" id="prezime" placeholder="Prezime" >
+        </div>
+        <div>
+        <label for="password">Lozinka</label>
+        <input type="password" name="password" id="password" placeholder="Lozinka" >
+       </div>
+        <div>
+        <label for="email">E-mail adresa</label>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+        </div>
+        <div>
+            <button type="submit">Registruj se</button>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

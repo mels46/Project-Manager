@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body  class="background">
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+
+<h1><%=title%></h1>
+
+<div class="container">
+<table class="table">
+    <thead>
+    <tr>
+        <th>Naziv</th>
+        <th>Opis</th>
+        <th>Startni datum</th>
+        <th>Zavrsni datum</th>
+        <th>Preostalo vrijeme</th>
+        <th>Uredi</th>
+        <th>Obrisi</th>
+
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <%projects.forEach(project=> {%>
+    <tr>
+        <td><a href="<%=`/project/${project._id}`%>"> <%=project.naziv%></a></td>
+        <td><%=project.opis%></td>
+
+        <td><%=project.startniDatum%></td>
+        <td><%=project.zavrsniDatum%></td>
+        <%if(project.preostaloVrijeme >0){%>
+        <td>Preostalo vam je <%=project.preostaloVrijeme%> dana za predaju projekta</td>>
+        <%}else if(project.preostaloVrijeme===0 && project.zavrsniDatum ){%>
+            <td>Danas morate predati projekat</td>
+        <%}else {let x=project.preostaloVrijeme*(-1); %>
+        <td>Kasnite <%=x%> dana sa predajom projekta</td>
+        <%}%>
+
+        <td><a href="<%=`/project/${project._id}/editProject`%>">Uredi projekat</a></td>
+        <td><a href="<%=`/project/${project._id}/deleteProject?_method=DELETE`%>" onclick="return confirm('Are you aure yout want to delete this project')">Delete</a></td>
+
+
+    </tr>
+    <%});%>
+
+    </tbody>
+
+</table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<div class="data-form">
+    <form  method="post" action="<%=`/project/${project._id}/updateProject?_method=PUT`%>">
+        <h2>Edit Project:</h2>
+        <label for="naziv">Naziv</label>
+        <input type="text" name="naziv" id="naziv" value="<%=project.naziv%>" autofocus>
+        <label for="opis">Opis</label>
+        <input type="text" name="opis" id="opis" value="<%=project.opis%>">
+        <label for="startniDatum">Startni datum:</label>
+        <input type="date" name="startniDatum" id="startniDatum"  value="<%=project.startniDatum%>" required>
+        <label for="zavrsniDatum">Zavrsni datum:</label>
+        <input type="date" name="zavrsniDatum" id="zavrsniDatum"  value="<%=project.zavrsniDatum%>" required>
+        <label for="radnici">E-mail adrese radnika (odvojene zarezom):</label><br>
+        <input type="text" id="radnici" name="radnici" required><br><br>
+
+        <button type="submit">Update</button>
+    </form>
+
+</div>
+</body>
+</html>

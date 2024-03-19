@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/LoginStyle.css' />
+</head>
+<body class="background-image">
+
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+<div class="login-container">
+    <form action="/users/login" method="post">
+        <h2>Prijavi se:</h2>
+        <div class="form-group">
+        <label for="email">Email</label>
+           <input type="email" name="email" id="email" placeholder="Email adresa" required>
+        </div>
+        <div class="form-group">
+        <label for="password">Lozinka</label>
+            <input type="password" name="password" id="passsword" placeholder="Lozinka" >
+        </div>
+        <button type="submit" >Prijavi se</button>
+    </form>
+
+</div>
+</body>
+</html>

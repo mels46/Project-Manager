@@ -1,0 +1,32 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+.background-image {
+    background-image: url("../images/pozadina.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    padding:3%;
+}
+.background{
+    padding:3%;
+    background-color: #c5c4c4;
+}
+
+h1{
+
+    color: #181818;
+}
+h2{
+    margin-top: 1%;
+    border:turquoise solid;
+    border-radius: 2%;
+    color:turquoise;
+    background-color: #181818;
+}
+span{
+    float: right;
+}
+

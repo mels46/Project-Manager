@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/SignInStyle.css' />
+    <title>Kreiraj novi projekat</title>
+</head>
+<body class="background-image" >
+
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+
+<% if (typeof messages !== 'undefined' && messages.length > 0) { %>
+    <% messages.forEach(message => { %>
+        <p><%= message %></p>
+    <% }); %>
+<% } %>
+<div >
+<div class="scontainer" style="margin: 2%">
+
+<form action="/project/newProject" method="post">
+    <label for="naziv">Naziv projekta:</label>
+    <input type="text" id="naziv" name="naziv" required><br><br>
+
+    <label for="opis">Opis projekta:</label><br>
+    <textarea id="opis" name="opis" rows="4" cols="50"></textarea><br><br>
+
+    <label for="radnici">E-mail adrese radnika (odvojene zarezom):</label><br>
+    <input type="text" id="radnici" name="radnici" required><br><br>
+    <label for="manager">E-mail adresa menadžera projekta</label><br>
+    <input type="text" id="manager" name="manager" required><br><br>
+
+    <label for="startniDatum">Startni datum:</label>
+    <input type="date" id="startniDatum" name="startniDatum" required><br><br>
+    <label for="zavrsniDatum">Startni datum:</label>
+    <input type="date" id="zavrsniDatum" name="zavrsniDatum" required><br><br>
+
+    <input type="submit" value="Kreiraj projekt">
+</form>
+</div>
+</div>
+</body>
+</html>

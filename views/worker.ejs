@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href='/stylesheets/style.css'>
+    <script type="text/javascript" src='/javascripts/scripts.js'></script>
+    <script type="text/javascript" src='/javascripts/chatScript.js'></script>
+
+
+<title><%=title%></title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navColor" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <i id="sidebarCollapse" class="fas fa-user-circle"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+               <li style="padding-top:7.5%"> <%- include ('_tasksModal.ejs')%></li>
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/chat"><span id="chat-icon " class="fas fa-comment"></span> Chat</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+
+
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+    <p class="sidebarA"><%=user.fullName%></p>
+    <p class="sidebarA"><%=user.email%></p>
+    <p class="sidebarA"><%=user.status%></p>
+    <a class="sidebarA" href="<%=`/users/${user._id}/edit`%>">Edit user detail</a>
+    <a  class="sidebarA"href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> Odjavi se</a>
+
+
+</div>
+<div class="container">
+    <div class="row ">
+        <%projects.forEach(project=> {%>
+        <div class="col-md-5 col-sm-8">
+            <div class="project-card">
+                <h4><%=project.naziv%></h4>
+                <p><%=project.opis%></p>
+                <p><%=project.startniDatum%></p>
+
+
+            </div>
+        </div>
+        <%});%>
+</div>
+</div>
+
+
+
+
+
+<script>
+    function openNav() {
+        document.getElementById("sidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("sidebar").style.width = "0";
+    }
+
+    document.getElementById("sidebarCollapse").addEventListener("click", function() {
+        openNav();
+    });
+</script>
+
+
+
+
+
+</body>
+</html>

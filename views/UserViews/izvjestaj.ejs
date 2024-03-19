@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/styleI.css' />
+</head>
+<body >
+<h1>Izvjestaj za radnika: <%=user.fullName%></h1>
+<div class="container">
+    <div class="row">
+<h2>Lista Projekata:</h2>
+
+<ul>
+    <% if (projects && projects.length > 0) { %>
+        <% projects.forEach(project => { %>
+            <li><%= project.naziv %></li>
+        <% }); %>
+    <% } else { %>
+        <li>Nema dostupnih projekata</li>
+    <% } %>
+</ul>
+    </div>
+    <div class="row">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Naziv zadatka</th>
+                <th>Opis zadatka</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% tasks.forEach(task => { %>
+                <tr>
+                    <td><%= task.naziv %></td>
+                    <td><%= task.opis %></td>
+                    <td><%= task.status %></td>
+                </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+<div class="row">
+    <p> <%=user.ime%> ukupno je provela <%=ukupnoDana%>%> dana radeći na projektima, u prosjeku <%=prosjek%> sati dnevno</p>
+</div>
+</div>
+</body>
+</html>

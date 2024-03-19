@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-utilities.css">
+    <link rel='stylesheet' href='/stylesheets/taskStyle.css' />
+    <link rel='stylesheet' href='/stylesheets/daysStyle.css' />
+</head>
+<body class="background">
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+<div class="container">
+<h1>Zadatak:  <%=task.naziv%></h1>
+<h3>Opis zadatka</h3>
+    <p><%=task.opis%></p>
+    <p>Radnik:<%=task.radnikIme%> </p>
+
+</div>
+<div class="container">
+    <h2 style="text-align: center">Uvid u broj radnih sati na projektu</h2>
+<table>
+    <tr>
+        <% const sedmica = ["Ponedeljak", "Utorak", "Srijeda", "Četvrtak", "Petak", "Subota", "Nedelja"]; %>
+        <% for (let i = 0; i < 7; i++) { %>
+            <th><%= sedmica[i] %></th>
+        <% } %>
+    </tr>
+
+    <% let maxRows = 0; %>
+    <% for (let i = 0; i < 7; i++) { %>
+        <% let dayHours = days.filter(day => day.danUSedmici === sedmica[i]); %>
+        <% maxRows = Math.max(maxRows, dayHours.length); %>
+    <% } %>
+
+    <% for (let row = 0; row < maxRows; row++) { %>
+        <tr>
+            <% for (let i = 0; i < 7; i++) { %>
+                <td>
+                    <% let dayHours = days.filter(day => day.danUSedmici === sedmica[i]); %>
+                    <% if (dayHours[row]) { %>
+                        <%= dayHours[row].dnevnoSati %>
+                    <% } else { %>
+                        0
+                    <% } %>
+                </td>
+            <% } %>
+        </tr>
+    <% } %>
+</table>
+  <h2>Ukupan broj sati na zadataku: <span><%=total%></span></h2>
+
+</div>
+
+
+<script>
+
+    function getDayName(index) {
+        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        return daysOfWeek[index];
+    }
+</script>
+</body>
+
+
+</html>

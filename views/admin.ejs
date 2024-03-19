@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/jquery/jquery.min.js"></script>
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href='/stylesheets/style.css'>
+    <script type="text/javascript" src='/javascripts/scripts.js'></script>
+    <script type="text/javascript" src='/javascripts/chatScript.js'></script>
+
+
+    <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>-->
+    <title><%=title%></title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navColor" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <i id="sidebarCollapse" class="fas fa-user-circle"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+
+                <li class="active" ><a href="/project">Projekti</a></li>
+                <li class="active" ><a href="/task/task">Svi zadaci</a></li>
+                <li class="active" ><a href="/users/allUsers">Svi radnici</a></li>
+               <li style="padding-top: 2%">
+                   <form action="/users/email_izvjestaj" method="post">
+                       <label for="email">Izvještaj za korisnika</label>
+                       <input type="email" id="email" name="email" required>
+                       <button type="submit">Vidi izvještaj</button>
+                   </form>
+               </li>
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/chat"><span id="chat-icon " class="fas fa-comment"></span> Chat</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+
+
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+    <p class="sidebarA"><%=user.fullName%></p>
+    <p class="sidebarA"><%=user.email%></p>
+    <p class="sidebarA"><%=user.status%></p>
+    <a class="sidebarA" href="<%=`/users/${user._id}/edit`%>">Edit user detail</a>
+    <a  class="sidebarA"href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> Odjavi se</a>
+
+
+</div>
+<div class="container">
+    <div class="row ">
+        <%projects.forEach(project=> {%>
+        <div class="col-md-5 col-sm-8">
+            <div class="project-card">
+                <h4><%=project.naziv%></h4>
+                <p><%=project.opis%></p>
+                <p>Startni datum: <%=project.startniDatum%></p>
+                <p>Zavrsni datum: <%=project.zavrsniDatum%></p>
+                <button onclick="preusmjeri('/task/newT/<%= project._id %>')">Kreiraj Task</button>
+                <button onclick="preusmjeri('/project/<%= project._id %>/project_tasks')">Zadaci projekta</button>
+                <button onclick="preusmjeri('/users/projects/<%= project._id %>')">Radnici na projektu</button>
+
+                <%if(project.preostaloVrijeme >0){%>
+                <p>Preostalo vam je <%=project.preostaloVrijeme%> dana za predaju projekta</p>
+                <%}else if(project.preostaloVrijeme===0 && project.zavrsniDatum ){%>
+                    <p>Danas morate predati projekat</p>
+                <%}else {let x=project.preostaloVrijeme*(-1); %>
+                <p>Kasnite <%=x%> dana sa predajom projekta</p>
+                <%}%>
+
+
+
+
+            </div>
+        </div>
+        <%});%>
+    </div>
+    <button id="preusmjeriDugme"  class="modal-b" onclick="preusmjeri('/project/new')">Kreiraj novi projekat</button>
+</div>
+
+
+
+
+
+<script>
+    function openNav() {
+        document.getElementById("sidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("sidebar").style.width = "0";
+    }
+
+    document.getElementById("sidebarCollapse").addEventListener("click", function() {
+        openNav();
+    });
+</script>
+
+
+
+
+
+</body>
+</html>

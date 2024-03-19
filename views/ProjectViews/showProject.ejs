@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-utilities.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+<h1>Projekat:  <%=project.ime%></h1>
+<table class="table">
+
+    <tr>
+        <th>Naziv</th>
+        <td><%=project.naziv%></td>
+    </tr>
+    <tr>
+        <th>Opis</th>
+
+        <td><%=project.opis%></td>
+    </tr>
+    <tr>
+        <th>Startno vrijeme:</th>
+
+        <td><%=project.startniDatum%></td>
+
+    </tr>
+
+</table>
+<div> <a href="/project ">Pregled svih projekata:</a></div>
+<div> <a href="<%=`/project/${project._id}/editProject`%>">Uredi podatke projekta</a></div>
+<div><a href="<%=`/project/${project._id}/radniciNaProjektu`%>">Radnici na projektu</a></div>
+<div><a href="<%=`/project/${project._id}/project_tasks`%>">Zadaci projekta</a></div>
+<div> <a href="<%=`/project/${project._id}/deleteProject?_method=DELETE`%>"
+         onclick="return confirm('Are you sure you want to delete this project')">
+        Delete</a>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+
+<h1><%= title %></h1>
+<h2>Radnici Table</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Ime i prezime</th>
+        <th>Status</th>
+        <th>Email</th>
+        <th>Uredi profil radnika</th>
+        <th>Obrisi</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%users.forEach(user=> {%>
+    <tr>
+        <td> <%=user.fullName%></td>
+        <td><%=user.status%></td>
+        <td><%=user.email%></td>
+
+
+        <td><a href="<%=`/users/${user._id}/edit`%>">Edit User detail</a></td>
+        <td><a href="<%=`/users/${user._id}/projects/${projectId}/delete?_method=DELETE`%>" onclick="return confirm('Are you sure yout want to delete this user from project')">Delete</a></td>
+
+
+
+    </tr>
+    <%});%>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>

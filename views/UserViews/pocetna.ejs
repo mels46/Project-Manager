@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/buttonStyle.css' />
+</head>
+<body class="background-image">
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+<%if(loggedIn){%>
+    <div class="login-container">
+        <p class="custom-text"> Dobro došli natrag <%=currentUser.ime%></p>
+        <% if (currentUser.status == "radnik") { %>
+            <div class="center-button">
+                <a href="/users/<%= currentUser._id %>"><button class="custom-button">Uđite na profil</button></a>
+            </div>
+        <% } else if (currentUser.status == "menadžer") { %>
+            <div class="center-button">
+                <a href="/users/<%= currentUser._id %>"><button class="custom-button">Uđite na profil</button></a>
+                <a href="/users/<%= currentUser._id %>/m"><button class="custom-button">Uđite na svoju menadžer stranicu</button></a>
+
+            </div>
+        <% } else if (currentUser.status == "administrator") { %>
+            <div class="center-button">
+                <a href="/users/<%= currentUser._id %>/a"><button class="custom-button">Uđite na profil</button></a>
+            </div>
+        <% } %>
+        <div class="custom-text"><a href="/users/logout">Odjavi se</a></div>
+        <%}else{ %>
+            <div class="custom-text"> <a href="/users/login">Prijavi se</a></div>
+        <%}%>
+
+    </div>
+
+
+
+
+
+
+</body>
+</html>

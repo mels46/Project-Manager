@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<div class="data-form">
+    <form  method="post" action="<%=`/users/${user._id}/update?_method=PUT`%>">
+        <h2>Edit:</h2>
+        <label for="ime">Ime</label>
+        <input type="text" name="ime" id="ime" placeholder="Ime" autofocus>
+        <label for="prezime">Prezime</label>
+        <input type="text" name="prezime" id="prezime" placeholder="Prezime" >
+        <label for="status">Status</label>
+        <select name="status" id="status">
+            <option value="radnik">Radnik</option>
+            <option value="menadžer">Menadžer</option>
+        </select>
+        <label for="email">E-mail adresa</label>
+        <input type="email" name="email" id="email" placeholder="Email" required>
+        <button type="submit">Uredi</button>
+    </form>
+
+</div>
+</body>
+</html>

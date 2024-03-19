@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+
+<h1><%= title %></h1>
+<h2>Radnici Table</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Ime</th>
+        <th>Prezime</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%radnici.forEach(radnik=> {%>
+    <tr>
+        <td> <%=radnik.ime%></td>
+        <td><%=radnik.prezime%></td>
+
+
+    </tr>
+    <%});%>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>

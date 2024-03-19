@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+<h1>User data for <%=user.ime%></h1>
+<table class="table">
+
+    <tr>
+        <th>Ime</th>
+        <td><%=user.ime%></td>
+    </tr>
+    <tr>
+        <th>Prezime</th>
+
+        <td><%=user.prezime%></td>
+    </tr>
+    <tr>
+        <th>Email</th>
+
+        <td><%=user.email%></td>
+
+    </tr>
+    <tr>
+        <th>API Token</th>
+
+        <td><%=user.apiToken%></td>
+
+    </tr>
+
+</table>
+<div> <a href="/users/pocetna">View all users</a></div>
+<div> <a href="<%=`/users/${user._id}/edit`%>">Edit user detail</a></div>
+
+<div> <a href="<%=`/users/${user._id}/delete?_method=DELETE`%>"
+         onclick="return confirm('Are you sure you want to delete this user')">
+        Delete</a>
+</div>
+
+<%if(loggedIn){%>
+Logged in as <a href="<%=`/users/${currentUser._id}`%>"><%=currentUser.ime%></a>
+<a href="/users/logout">Odjavi se</a>
+<%}else{ %>
+    <a href="/users/login">Prijavi se</a>
+<%}%>
+</body>
+</html>

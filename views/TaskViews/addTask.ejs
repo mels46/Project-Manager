@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+<div class="data-form">
+    <form action="/task/newTask/<%=projectId%>" method="post">
+        <label for="naziv">Naziv</label>
+        <input type="text" name="naziv" id="naziv" placeholder="Naziv" required>
+        <label for="opis">Opis</label>
+        <input type="text" name="opis" id="opis" placeholder="Opis" required>
+        <label for="radnik">Radnik</label>
+        <input type="email" name="radnik" id="radnik" placeholder="Radnik" required>
+        <button type="submit">Dodaj</button>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<div class="data-form">
+    <form  method="post" action="<%=`/task/${task._id}/updateTask?_method=PUT`%>">
+        <h2>Dodaj radnika na projekat:</h2>
+        <h2>Edit Task:</h2>
+        <label for="naziv">Naziv</label>
+        <input type="text" name="naziv" id="naziv" placeholder="Naziv" autofocus>
+        <label for="opis">Opis</label>
+        <input type="text" name="opis" id="opis" placeholder="Opis" >
+        <label for="radnik">E-mail adresa</label>
+        <input type="email" name="radnik" id="radnik" placeholder="Email novog radnika"  required>
+        <button type="submit">Update</button>
+    </form>
+
+</div>
+</body>
+</html>

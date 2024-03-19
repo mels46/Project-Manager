@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+.background-image {
+  background-image: url("../images/pozadina.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+}
+.login-container {
+    position: absolute;
+    top: 50%;
+    right: 18%;
+    transform: translateY(-50%);
+    padding: 60px;
+    background-color: #181818;
+    color: turquoise;
+    border-radius:18px;
+    text-align: center
+}
+
+.center-button {
+    text-align: center;
+    display: block;
+}
+
+.custom-button {
+    background-color: #181818;
+    color: turquoise;
+    border: 2px solid turquoise;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 15px 30px;
+    font-size: 20px;
+}
+
+.custom-button:hover {
+    background-color: turquoise;
+    color: #181818;
+}
+.custom-text {
+    text-decoration: none;
+    color: #181818;
+    font-size: 24px;
+    margin: 15px;
+    background-color: turquoise;
+    text-align: center;
+    border-radius: 2%;
+
+}
+.custom-text  a{
+    text-decoration: none;
+}

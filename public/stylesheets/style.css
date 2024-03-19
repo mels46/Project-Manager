@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #c5c4c4;
+
+}
+.background-image {
+  background-image: url("../images/pozadina.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+}
+.navColor .navbar-nav > li{
+    color: darkturquoise;
+}
+.navColor .navbar-nav > li > a {
+  color: turquoise;
+}
+.navColor .navbar-nav > li > a:hover,
+.navColor .navbar-nav > li > a:focus {
+  color:  #c5c4c4;
+}
+.sidebar {
+  margin-top:3%;
+  height: 100%;
+  width: 0;
+  border: #181818;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: turquoise;
+  color:#181818;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+
+}
+
+.sidebarA{
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #181818;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #c5c4c4;
+  color: #181818;
+  text-decoration: none;
+}
+
+.sidebar .close-btn {
+  color: #181818;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  border: #181818;
+  text-decoration: none;
+}
+.project-card{
+  margin: 3%;
+  border-radius: 8%;
+  background-color: #181818;
+  color: darkturquoise;
+  padding: 5%;
+
+}
+#myModal{
+  border: #181818 solid;
+  background-color: #c5c4c4;
+  border-radius: 2%;
+
+}
+.modal-body{
+  display: block;
+  border-radius: 2%;
+}
+.modal-b{
+  margin-top:2%;
+  border:turquoise solid;
+  color:turquoise;
+  border-radius: 1%;
+  padding:2%;
+  background-color: #181818;
+
+}
+.close{
+  color: #181818;
+  opacity: 100%;
+}
+.editButton{
+  border: turquoise;
+  border-radius: 1%;
+  color: #181818;
+  background-color: #c5c4c4;
+  margin: 0%;
+  float: right;
+  align-items: center;
+
+}
+
+h1{
+  color: #181818;
+  text-align: center;
+}

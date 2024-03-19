@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+
+    <link rel='stylesheet' href='/stylesheets/daysStyle.css' />
+</head>
+<body class="background-image b">
+
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+<div class="data-form login-container">
+    <form action="http://localhost:3000/task/<%=taskId%>/new" method="post">
+        <h2>Dodaj dan rada na projekat:</h2>
+        <div class="form-group">
+        <label for="dan">Izaberi dan:</label>
+
+        <select id="dan" name="dan">
+            <option value="Ponedeljak">Ponedjeljak</option>
+            <option value="Utorak">Utorak</option>
+            <option value="Srijeda">Srijeda</option>
+            <option value="Četvrtak">Četvrtak</option>
+            <option value="Petak">Petak</option>
+            <option value="Subota">Subota</option>
+            <option value="Nedelja">Nedjelja</option>
+        </select>
+
+        </div>
+        <div class="form-group">
+        <label for="dnevnoSati">Sati danas:</label>
+        <input type="number" name="dnevnoSati" id="dnevnoSati" min="1" max="24" required>
+        </div>
+        <div class="form-group">
+        <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="nezavršen">Nezavršen</option>
+                <option value="završen">Završen</option>
+            </select>
+       </div>
+        <button type="submit">Dodaj</button>
+    </form>
+</div>
+
+
+</div>
+</body>
+</html>

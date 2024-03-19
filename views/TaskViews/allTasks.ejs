@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/ikona.png" type="image/x-icon">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="flashes">
+    <%if(flashMessages){%>
+    <%if(flashMessages.success){%>
+    <div class="flash succes"><%=flashMessages.success%></div>
+    <%}else if(flashMessages.error){%>
+    <div class="flash error"><%=flashMessages.error%></div>
+    <%}%>
+    <%}%>
+</div>
+
+<h1><%= title %></h1>
+<h2>Task Table</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Naziv</th>
+        <th>Opis</th>
+        <th>Radnik zaduzen za zadatak</th>
+        <th>Uredi zadatak</th>
+        <th>Obriši zadatak</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%tasks.forEach(task=> {%>
+    <tr>
+        <td><a href="<%=`/task/${task._id}`%>"> <%=task.naziv%></a></td>
+        <td><%=task.opis%></td>
+        <td><%=task.radnikIme%></td>
+        <td><a href="<%=`/task/${task._id}/editTask`%>">Edit Task</a></td>
+        <td><a href="<%=`/task/${task._id}/deleteTask?_method=DELETE`%>" onclick="return confirm('Are you aure yout want to delete this user')">Delete</a></td>
+
+    </tr>
+    <%});%>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>
