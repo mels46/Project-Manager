@@ -89,7 +89,7 @@ app.use('/api',apiRouter);
 app.use('/day',dayRouter);
 app.get("token");
 
-
+app.get("session");
 
 
 // catch 404 and forward to error handler
@@ -118,6 +118,7 @@ mongoose.connect(
     }
 );
 const db=mongoose.connection;
+
 
 db.once("open",()=>{
   console.log("Successfuly connected!");
